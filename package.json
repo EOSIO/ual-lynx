@@ -1,0 +1,60 @@
+{
+  "name": "@blockone/ual-lynx",
+  "version": "0.0.19",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Block.one",
+    "url": "https://block.one"
+  },
+  "contributors": [
+    "Eddie Sheffield",
+    "Nasser Abouelazm",
+    "Chris Allnutt",
+    "Randy Torres",
+    "Jeffrey Smith II",
+    "Tara Tritt"
+  ],
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "clean-build": "rm -rf dist && yarn build",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@blockone/universal-authenticator-library": "0.0.34",
+    "eos-lynx": "1.1.3",
+    "eosjs": "20.0.0-beta3"
+  },
+  "jest": {
+    "verbose": false,
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts?)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/dist"
+    ],
+    "testRegex": "(/src/.*(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testEnvironment": "jsdom"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.2.0",
+    "@blockone/tslint-config-blockone": "^1.0.0",
+    "@types/jest": "^23.3.10",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.2",
+    "window": "^4.2.5"
+  }
+}
