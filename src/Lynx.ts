@@ -14,10 +14,10 @@ import { UALLynxError } from './UALLynxError'
 declare var window: any
 
 export class Lynx extends Authenticator {
-  // Interval to test for whether the Lynx API has attached to the window
-  private static API_LOADED_CHECK_INTERVAL = 500
-  // Number of times to look for the Lynx API before giving up
-  private static NUM_CHECKS = 10
+  // Forces timeout if Lynx object is not found on window in 5 seconds
+  private static API_LOADED_CHECK_TIMEOUT = 5000
+  // Reference for Lynx timeout function
+  private static LYNX_TIMEOUT: any = null
   private users: LynxUser[] = []
   private lynxIsLoading: boolean = true
   private initError: UALError | null = null
@@ -35,16 +35,15 @@ export class Lynx extends Authenticator {
     super(chains)
   }
 
-  private isLynxReady(): Promise<boolean> {
-    return new Promise((resolve) => {
-      let checkCount = Lynx.NUM_CHECKS
-      const checkInterval = setInterval(() => {
-        if (!!window.lynxMobile || checkCount === 0) {
-          clearInterval(checkInterval)
-          resolve(!!window.lynxMobile)
-        }
-        checkCount--
-      }, Lynx.API_LOADED_CHECK_INTERVAL)
+  private async isLynxReady(): Promise<boolean> {
+    return await new Promise((resolve) => {
+      Lynx.LYNX_TIMEOUT = setTimeout(() => {
+        resolve(false)
+      }, Lynx.API_LOADED_CHECK_TIMEOUT)
+      window.addEventListener('lynxMobileLoaded', async () => {
+        clearTimeout(Lynx.LYNX_TIMEOUT)
+        resolve(true)
+      })
     })
   }
 
@@ -58,8 +57,11 @@ export class Lynx extends Authenticator {
         return false
       }
     }
-
     return true
+  }
+
+  private isLynxBrowser(): boolean {
+    return window.navigator.userAgent.toLowerCase().indexOf('eoslynx') !== -1
   }
 
   /**
@@ -70,7 +72,7 @@ export class Lynx extends Authenticator {
   public async init() {
     this.lynxIsLoading = true
     try {
-      let lynxReady = await this.isLynxReady()
+      const lynxReady = await this.isLynxReady()
       if (!lynxReady) {
         throw new Error('Unable to connect')
       }
@@ -103,7 +105,7 @@ export class Lynx extends Authenticator {
    * provided all chains are supported.
    */
   public shouldRender(): boolean {
-    if (this.supportsAllChains()) {
+    if (this.isLynxBrowser() && this.supportsAllChains()) {
       return true
     }
 
