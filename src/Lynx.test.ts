@@ -8,10 +8,39 @@ declare var window: any
 
 jest.useFakeTimers()
 
+//Make userAgent mutable for testing
+Object.defineProperty(window.navigator, 'userAgent', ((_value) => {
+  return {
+    get: () => _value,
+    set: (v) => {
+        _value = v;
+    }
+  };
+})(window.navigator.userAgent))
+
 const accountObj = JSON.parse(AccountJSON)
+const supportedChains: Chain[] = [
+  {
+    chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
+    rpcEndpoints: [] as RpcEndpoint[]
+  }
+]
+const unsupportedChains: Chain[] = [
+  {
+    chainId: '687fa513e18843ad3e820744f4ffcf93k1354036d80737db8dc444fe4m15ad17',
+    rpcEndpoints: [] as RpcEndpoint[]
+  },
+  {
+    chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
+    rpcEndpoints: [] as RpcEndpoint[]
+  }
+]
 
 describe('Lynx', () => {
   let lynxMobile: any
+  const lynxIosBrowser: string = 'EOSLynx IOS'
+  const lynxAndroidBrowser: string = 'EOSLynx Android'
+  const otherBrowser: string = 'Chrome'
 
   beforeEach(() => {
     const requestSetAccount = jest
@@ -52,30 +81,38 @@ describe('Lynx', () => {
   describe('shouldRender', () => {
     it('should return false if a given chain is not supported', () => {
       window.lynxMobile = lynxMobile
-      const chains = [
-        {
-          chainId: '687fa513e18843ad3e820744f4ffcf93k1354036d80737db8dc444fe4m15ad17',
-          rpcEndpoints: [] as RpcEndpoint[]
-        },
-        {
-          chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
-          rpcEndpoints: [] as RpcEndpoint[]
-        }
-      ]
+      window.navigator.userAgent = lynxIosBrowser
+      const chains = unsupportedChains
       const lynx = new Lynx(chains)
       const shouldRender = lynx.shouldRender()
       jest.runAllTimers()
       expect(shouldRender).toBe(false)
     })
 
-    it('should return true if all given chains are supported', () => {
+    it('should return false if outside of Lynx browser', () => {
       window.lynxMobile = lynxMobile
-      const chains = [
-        {
-          chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
-          rpcEndpoints: [] as RpcEndpoint[]
-        }
-      ]
+      window.navigator.userAgent = otherBrowser
+      const chains = supportedChains
+      const lynx = new Lynx(chains)
+      const shouldRender = lynx.shouldRender()
+      jest.runAllTimers()
+      expect(shouldRender).toBe(false)
+    })
+
+    it('should return true if all given chains are supported within lynx ios browser', () => {
+      window.lynxMobile = lynxMobile
+      window.navigator.userAgent = lynxIosBrowser
+      const chains = supportedChains
+      const lynx = new Lynx(chains)
+      const shouldRender = lynx.shouldRender()
+      jest.runAllTimers()
+      expect(shouldRender).toBe(true)
+    })
+
+    it('should return true if all given chains are supported within lynx android browser', () => {
+      window.lynxMobile = lynxMobile
+      window.navigator.userAgent = lynxAndroidBrowser
+      const chains = supportedChains
       const lynx = new Lynx(chains)
       const shouldRender = lynx.shouldRender()
       jest.runAllTimers()
