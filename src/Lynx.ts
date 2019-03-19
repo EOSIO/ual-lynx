@@ -35,12 +35,12 @@ export class Lynx extends Authenticator {
     super(chains)
   }
 
-  private async isLynxReady(): Promise<boolean> {
-    return await new Promise((resolve) => {
+  private isLynxReady(): Promise<boolean> {
+    return new Promise((resolve) => {
       Lynx.LYNX_TIMEOUT = setTimeout(() => {
         resolve(false)
       }, Lynx.API_LOADED_CHECK_TIMEOUT)
-      window.addEventListener('lynxMobileLoaded', async () => {
+      window.addEventListener('lynxMobileLoaded', () => {
         clearTimeout(Lynx.LYNX_TIMEOUT)
         resolve(true)
       })
