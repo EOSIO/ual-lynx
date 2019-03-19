@@ -41,6 +41,7 @@ export class Lynx extends Authenticator {
         resolve(false)
       }, Lynx.API_LOADED_CHECK_TIMEOUT)
       if (!!window.lynxMobile) {
+        clearTimeout(Lynx.LYNX_TIMEOUT)
         resolve(true)
       }
       window.addEventListener('lynxMobileLoaded', () => {
