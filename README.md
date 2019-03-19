@@ -15,17 +15,17 @@ This authenticator is meant to be used with [Universal Authenticator Library](ht
 
 You must use one of the UAL renderers below.
 
-React - `@blockone/universal-authenticator-library-react-js-renderer`
+React - `@blockone/ual-reactjs-renderer`
 
 
-PlainJS - `@blockone/universal-authenticator-library-plain-js-renderer`
+PlainJS - `@blockone/ual-plainjs-renderer`
 
 
 #### Basic Usage with React
 
 ```javascript
 import { Lynx } from '@blockone/ual-lynx'
-import { UALProvider, withUAL } from '@blockone/universal-authenticator-library-react-js-renderer'
+import { UALProvider, withUAL } from '@blockone/ual-reactjs-renderer'
 
 const exampleNet = {
   chainId: '',
@@ -47,8 +47,7 @@ const lynx = new Lynx([exampleNet])
 ```
 
 ### Warnings and Limitations
-* Using Lynx within your app is no different than using other authenticator plugins. However, if your application is being used from within the Lynx mobile app it is using an embedded browser to view the application. The main restriction is that the Lynx mobile app (and consequently the authenticator) can **ONLY** communicate with EOS Mainnet. So when setting up UAL, if you specify other chains it will not work. This is also true if you specify additional chains along with Mainnet. This can make testing difficult if your application is using contracts that are not yet deployed to Mainnet.
-* Though the Lynx authenticator supports *auto-login* within its own (Lynx) browser, this feature may be compromised when an app supports similar mobile authenticators such as [UAL Token Pocket](https://github.com/EOSIO/ual-token-pocket). As outlined in the logic of the [UAL base class](https://github.com/EOSIO/universal-authenticator-library/blob/develop/packages/universal-authenticator-library/src/UAL.ts#L33), auto-login only occurs if a supporting authenticator is the **only** available authenticator.
+Using Lynx within your app is no different than using other authenticator plugins. However, if your application is being used from within the Lynx mobile app it is using an embedded browser to view the application. The main restriction is that the Lynx mobile app (and consequently the authenticator) can **ONLY** communicate with EOS Mainnet. So when setting up UAL, if you specify other chains it will not work. This is also true if you specify additional chains along with Mainnet. This can make testing difficult if your application is using contracts that are not yet deployed to Mainnet.
 
 ### Testing on Mainnet
 For a simple test to verify that authentication is working, you can stick with system contracts that are already present on Mainnet (e.g. transfer). In this case you can run a simple app locally fronted by [ngrok](https://ngrok.com/). Lynx DOES have the ability to point to an app for testing wherever it is being hosted (i.e. the ngrok url), but the app must only use Mainnet. Below is a brief outline of how to test Lynx with a local instance of your app:
