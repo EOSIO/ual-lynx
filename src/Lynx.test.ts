@@ -55,7 +55,7 @@ describe('Lynx', () => {
   })
 
   describe('init', () => {
-    it('loading should be false if Lynx is not loaded', () => {
+    it('loading should be false if lynxMobile object is eventually attached to the window', () => {
       window.lynxMobile = null
       const lynx = new Lynx([] as Chain[])
       lynx.init()
@@ -67,6 +67,13 @@ describe('Lynx', () => {
         jest.runAllTimers()
         expect(lynx.isLoading()).toBe(false)
       })
+    })
+
+    it('loading should be false if lynxMobile object is immediately attached to the window', async () => {
+      window.lynxMobile = lynxMobile
+      const lynx = new Lynx([] as Chain[])
+      await lynx.init()
+      expect(lynx.isLoading()).toBe(false)
     })
 
     it('loading should be true if Lynx is not loaded', () => {
