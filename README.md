@@ -1,4 +1,4 @@
-# UAL for Lynx Authenticator
+# UAL for Lynx Authenticator ![EOSIO Alpha](https://img.shields.io/badge/EOSIO-Alpha-blue.svg)
 
 This authenticator is meant to be used with [Universal Authenticator Library](https://github.com/EOSIO/universal-authenticator-library)
 
