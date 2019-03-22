@@ -1,4 +1,4 @@
-# UAL Lynx Authenticator
+# UAL for Lynx Authenticator
 
 This authenticator is meant to be used with [Universal Authenticator Library](https://github.com/EOSIO/universal-authenticator-library)
 
