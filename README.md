@@ -9,23 +9,23 @@ This authenticator is meant to be used with [Universal Authenticator Library](ht
 
 **Note:** be sure to read the [Warning and Limitations](#warning-and-limitations) section below.
 
-`yarn add @blockone/ual-lynx`
+`yarn add ual-lynx`
 
 #### Dependencies
 
 You must use one of the UAL renderers below.
 
-React - `@blockone/ual-reactjs-renderer`
+React - `ual-reactjs-renderer`
 
 
-PlainJS - `@blockone/ual-plainjs-renderer`
+PlainJS - `ual-plainjs-renderer`
 
 
 #### Basic Usage with React
 
 ```javascript
-import { Lynx } from '@blockone/ual-lynx'
-import { UALProvider, withUAL } from '@blockone/ual-reactjs-renderer'
+import { Lynx } from 'ual-lynx'
+import { UALProvider, withUAL } from 'ual-reactjs-renderer'
 
 const exampleNet = {
   chainId: '',
