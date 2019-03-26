@@ -1,6 +1,6 @@
 {
-  "name": "@blockone/ual-lynx",
-  "version": "0.0.25",
+  "name": "ual-lynx",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
