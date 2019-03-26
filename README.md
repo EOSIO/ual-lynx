@@ -65,13 +65,13 @@ From this point on, the app should behave as expected.
 
 ## Contributing
 
-[Contributing Guide](https://github.com/EOSIO/ual-lynx/blob/develop/CONTRIBUTING.md)
+[Contributing Guide](./CONTRIBUTING.md)
 
-[Code of Conduct](https://github.com/EOSIO/ual-lynx/blob/develop/CONTRIBUTING.md#conduct)
+[Code of Conduct](./CONTRIBUTING.md#conduct)
 
 ## License
 
-[MIT](https://github.com/EOSIO/ual-lynx/blob/develop/LICENSE)
+[MIT](./LICENSE)
 
 ## Important
 
