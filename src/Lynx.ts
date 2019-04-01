@@ -5,7 +5,7 @@ import {
   UALError,
   UALErrorType,
   User
-} from '@blockone/universal-authenticator-library'
+} from 'universal-authenticator-library'
 import { Name } from './interfaces'
 import { lynxLogo } from './lynxLogo'
 import { LynxUser } from './LynxUser'

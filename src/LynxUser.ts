@@ -4,7 +4,7 @@ import {
   SignTransactionResponse,
   UALErrorType,
   User
-} from '@blockone/universal-authenticator-library'
+} from 'universal-authenticator-library'
 import { UALLynxError } from './UALLynxError'
 
 declare var window: any

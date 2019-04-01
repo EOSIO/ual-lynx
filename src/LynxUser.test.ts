@@ -1,4 +1,4 @@
-import { Chain, RpcEndpoint, UALErrorType } from '@blockone/universal-authenticator-library'
+import { Chain, RpcEndpoint, UALErrorType } from 'universal-authenticator-library'
 import { AccountJSON } from './fixtures/accountJSON'
 import { Name } from './interfaces'
 import { LynxUser } from './LynxUser'
