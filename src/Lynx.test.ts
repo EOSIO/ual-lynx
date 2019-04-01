@@ -1,4 +1,4 @@
-import { Chain, RpcEndpoint, UALErrorType } from '@blockone/universal-authenticator-library'
+import { Chain, RpcEndpoint, UALErrorType } from 'universal-authenticator-library'
 import { AccountJSON } from './fixtures/accountJSON'
 import { Name } from './interfaces'
 import { Lynx } from './Lynx'
@@ -8,14 +8,14 @@ declare var window: any
 
 jest.useFakeTimers()
 
-//Make userAgent mutable for testing
-Object.defineProperty(window.navigator, 'userAgent', ((_value) => {
+// Make userAgent mutable for testing
+Object.defineProperty(window.navigator, 'userAgent', ((val) => {
   return {
-    get: () => _value,
+    get: () => val,
     set: (v) => {
-        _value = v;
+      val = v
     }
-  };
+  }
 })(window.navigator.userAgent))
 
 const accountObj = JSON.parse(AccountJSON)

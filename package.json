@@ -22,9 +22,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@blockone/universal-authenticator-library": "0.0.34",
     "eos-lynx": "1.1.3",
-    "eosjs": "20.0.0-beta3"
+    "eosjs": "20.0.0-beta3",
+    "universal-authenticator-library": "^0.1.0"
   },
   "jest": {
     "verbose": false,

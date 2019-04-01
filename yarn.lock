@@ -33,11 +33,6 @@
     tslint "^5.11.0"
     tslint-eslint-rules "^5.4.0"
 
-"@blockone/universal-authenticator-library@0.0.34":
-  version "0.0.34"
-  resolved "https://registry.yarnpkg.com/@blockone/universal-authenticator-library/-/universal-authenticator-library-0.0.34.tgz#82f78a071b74162ae83acf12e074046f237ddd93"
-  integrity sha512-k6XsowYDBOZMzY8ALdpaPuV3XCGqbTgUAvYFJvZVpdc95PC+EhN7Quv7AODPoL0ruTbgmNH39LLBd9vQZSVQCw==
-
 "@types/jest@^23.3.10":
   version "23.3.14"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.14.tgz#37daaf78069e7948520474c87b80092ea912520a"
@@ -3924,6 +3919,11 @@ union-value@^1.0.0:
     get-value "^2.0.6"
     is-extendable "^0.1.1"
     set-value "^0.4.3"
+
+universal-authenticator-library@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/universal-authenticator-library/-/universal-authenticator-library-0.1.0.tgz#187e6a85f43e75d4d76b66c228c9e4b59770d4af"
+  integrity sha512-45nl80BWf+9WA8vTMXunMicZmHPm4wWdxNnSlL65cCP4OjA1ra4IuH+T7+Ko3P6IfXSfS9+VNCuXai3fip+taA==
 
 unset-value@^1.0.0:
   version "1.0.0"
