@@ -128,7 +128,8 @@ export class Lynx extends Authenticator {
   public async login(_?: string): Promise<User[]> {
     if (this.users.length === 0) {
       try {
-        const account = await window.lynxMobile.requestSetAccount()
+        const accountName = await window.lynxMobile.requestSetAccountName()
+        const account = await window.lynxMobile.requestSetAccount(accountName)
         this.users.push(new LynxUser(this.chains[0], account))
       } catch (e) {
         throw new UALLynxError(
