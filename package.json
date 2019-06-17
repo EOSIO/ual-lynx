@@ -1,6 +1,6 @@
 {
   "name": "ual-lynx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
@@ -19,6 +19,7 @@
     "build": "tsc --build tsconfig.json",
     "clean-build": "rm -rf dist && yarn build",
     "lint": "tslint -c tslint.json -p tsconfig.json",
+    "prepublish": "yarn clean-build",
     "test": "jest"
   },
   "dependencies": {
