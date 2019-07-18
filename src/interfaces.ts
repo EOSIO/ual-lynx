@@ -1,1 +1,1 @@
-export const Name: string = 'EOS Lynx'
+export const Name: string = 'Lynx'
