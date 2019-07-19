@@ -100,7 +100,7 @@ export class Lynx extends Authenticator {
       icon: lynxLogo,
       text: Name,
       textColor: 'white',
-      background: '#AF3863'
+      background: '#21202D'
     }
   }
 
@@ -168,7 +168,7 @@ export class Lynx extends Authenticator {
   }
 
   public getOnboardingLink(): string {
-    return 'https://eoslynx.com/'
+    return 'https://lynxwallet.io/'
   }
 
   public requiresGetKeyConfirmation(): boolean {
