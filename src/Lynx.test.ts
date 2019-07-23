@@ -40,6 +40,7 @@ describe('Lynx', () => {
   let lynxMobile: any
   const lynxIosBrowser: string = 'EOSLynx IOS'
   const lynxAndroidBrowser: string = 'EOSLynx Android'
+  const lynxDesktopBrowser: string = 'EOSLynx Desktop'
   const otherBrowser: string = 'Chrome'
 
   beforeEach(() => {
@@ -119,6 +120,16 @@ describe('Lynx', () => {
     it('should return true if all given chains are supported within lynx android browser', () => {
       window.lynxMobile = lynxMobile
       window.navigator.userAgent = lynxAndroidBrowser
+      const chains = supportedChains
+      const lynx = new Lynx(chains)
+      const shouldRender = lynx.shouldRender()
+      jest.runAllTimers()
+      expect(shouldRender).toBe(true)
+    })
+
+    it('should return true if all given chains are supported within lynx desktop browser', () => {
+      window.lynxMobile = lynxMobile
+      window.navigator.userAgent = lynxDesktopBrowser
       const chains = supportedChains
       const lynx = new Lynx(chains)
       const shouldRender = lynx.shouldRender()

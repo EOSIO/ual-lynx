@@ -50,21 +50,13 @@ export class LynxUser extends User {
   }
 
   public async signArbitrary(_: string, data: string, helpText: string): Promise<string> {
-    if (this.isIOS()) {
-      try {
-        return window.lynxMobile.requestArbitrarySignature({data, whatFor: helpText})
-      } catch (e) {
-        throw new UALLynxError(
-          'Unable to sign arbitrary string',
-          UALErrorType.Signing,
-          e
-        )
-      }
-    } else {
+    try {
+      return window.lynxMobile.requestArbitrarySignature({data, whatFor: helpText})
+    } catch (e) {
       throw new UALLynxError(
-        'Arbitrary data signing is only support on iOS',
+        'Unable to sign arbitrary string',
         UALErrorType.Signing,
-        null
+        e
       )
     }
   }
@@ -95,8 +87,4 @@ export class LynxUser extends User {
     return this.keys
   }
 
-  private isIOS(): boolean {
-    const userAgent = window.navigator.userAgent
-    return userAgent === 'EOSLynx IOS'
-  }
 }
