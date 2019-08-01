@@ -57,27 +57,6 @@ describe('LynxUser', () => {
   })
 
   describe('signArbitrary', () => {
-    it('throws UALError if not iOS', async () => {
-      const requestArbitrarySignature = jest.fn()
-      window.lynxMobile = {
-        requestArbitrarySignature
-      }
-      window.navigator.userAgent = 'EOSLynx Android'
-      let didThrow = true
-
-      try {
-        await user.signArbitrary('myPublicKey', 'This should be signed', 'Some help text')
-        didThrow = false
-      } catch (e) {
-        const ex = e as UALLynxError
-        expect(ex.message).toEqual('Arbitrary data signing is only support on iOS')
-        expect(ex.source).toEqual(Name)
-        expect(ex.type).toEqual(UALErrorType.Signing)
-        expect(ex.cause).toBeNull()
-      }
-
-      expect(didThrow).toBe(true)
-    })
 
     it('throws UALError on api error', async () => {
       const errorMsg = 'Error signing arbitrary data'
@@ -106,7 +85,7 @@ describe('LynxUser', () => {
       expect(didThrow).toBe(true)
     })
 
-    it('signs arbitrary data', async () => {
+    it('signs arbitrary data in IOS Browser', async () => {
       const expectedSignature = 'sig1234567890'
       const requestArbitrarySignature = jest
         .fn()
@@ -122,6 +101,41 @@ describe('LynxUser', () => {
 
       expect(signature).toEqual(expectedSignature)
     })
+
+    it('signs arbitrary data in Android Browser', async () => {
+      const expectedSignature = 'sig1234567890'
+      const requestArbitrarySignature = jest
+        .fn()
+        .mockImplementation(() => {
+          return expectedSignature
+        })
+      window.lynxMobile = {
+        requestArbitrarySignature
+      }
+      window.navigator.userAgent = 'EOSLynx Android'
+
+      const signature = await user.signArbitrary('myPublicKey', 'This should be signed', 'Some help text')
+
+      expect(signature).toEqual(expectedSignature)
+    })
+
+    it('signs arbitrary data in Desktop Browser', async () => {
+      const expectedSignature = 'sig1234567890'
+      const requestArbitrarySignature = jest
+        .fn()
+        .mockImplementation(() => {
+          return expectedSignature
+        })
+      window.lynxMobile = {
+        requestArbitrarySignature
+      }
+      window.navigator.userAgent = 'EOSLynx Desktop'
+
+      const signature = await user.signArbitrary('myPublicKey', 'This should be signed', 'Some help text')
+
+      expect(signature).toEqual(expectedSignature)
+    })
+
   })
 
   describe('signTransaction', () => {
