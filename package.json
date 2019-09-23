@@ -1,6 +1,6 @@
 {
   "name": "ual-lynx",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
@@ -23,8 +23,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "eosjs": "^20.0.0",
-    "universal-authenticator-library": "^0.1.0"
+    "eosjs": "20.0.0",
+    "universal-authenticator-library": "0.1.4"
   },
   "devDependencies": {
     "@babel/runtime": "^7.2.0",
