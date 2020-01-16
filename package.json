@@ -23,7 +23,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "eosjs": "20.0.0",
+    "eosjs": "21.0.1-rc1",
     "universal-authenticator-library": "0.1.4"
   },
   "devDependencies": {
