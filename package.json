@@ -1,6 +1,6 @@
 {
   "name": "ual-lynx",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
@@ -24,14 +24,14 @@
   },
   "dependencies": {
     "eosjs": "20.0.0",
-    "universal-authenticator-library": "0.1.4"
+    "universal-authenticator-library": "0.2.0"
   },
   "devDependencies": {
     "@babel/runtime": "^7.2.0",
     "@blockone/tslint-config-blockone": "^1.0.0",
-    "@types/jest": "^24.0.15",
-    "jest": "^24.8.0",
-    "ts-jest": "^24.0.2",
+    "@types/jest": "^24.0.25",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
     "tslint": "^5.11.0",
     "typescript": "^3.2.2",
     "window": "^4.2.5"
