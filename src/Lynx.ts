@@ -92,6 +92,7 @@ export class Lynx extends Authenticator {
 
   public reset(): void {
     this.initError = null
+    // tslint:disable-next-line:no-floating-promises
     this.init()
   }
 
