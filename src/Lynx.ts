@@ -11,7 +11,7 @@ import { lynxLogo } from './lynxLogo'
 import { LynxUser } from './LynxUser'
 import { UALLynxError } from './UALLynxError'
 
-declare var window: any
+declare const window: any
 
 export class Lynx extends Authenticator {
   // Forces timeout if Lynx object is not found on window in 5 seconds
@@ -29,6 +29,7 @@ export class Lynx extends Authenticator {
 
   /**
    * Lynx Constructor
+   *
    * @param chains
    */
   constructor(chains: Chain[]) {
@@ -92,7 +93,7 @@ export class Lynx extends Authenticator {
 
   public reset(): void {
     this.initError = null
-    // tslint:disable-next-line:no-floating-promises
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.init()
   }
 
