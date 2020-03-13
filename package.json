@@ -16,28 +16,22 @@
     "Tara Tritt"
   ],
   "scripts": {
-    "build": "tsc --build tsconfig.json",
-    "clean-build": "rm -rf dist && yarn build",
+    "build": "rm -rf dist && tsc --build tsconfig.json",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "prepublish": "yarn clean-build",
+    "prepare": "yarn build",
     "test": "jest"
   },
   "dependencies": {
-    "eosjs": "20.0.0",
+    "eosjs": "20.0.3",
     "universal-authenticator-library": "0.2.0"
   },
   "devDependencies": {
-    "@babel/runtime": "^7.2.0",
     "@blockone/eslint-config-blockone": "^3.0.0",
-    "@types/jest": "^24.0.25",
+    "@types/jest": "^25.1.4",
     "eslint": "^6.8.0",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.2.2",
-    "window": "^4.2.5"
-  },
-  "resolutions": {
-    "cache-base": "4.0.0"
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
   },
   "jest": {
     "verbose": false,
