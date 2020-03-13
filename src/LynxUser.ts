@@ -7,7 +7,7 @@ import {
 } from 'universal-authenticator-library'
 import { UALLynxError } from './UALLynxError'
 
-declare var window: any
+declare const window: any
 
 export class LynxUser extends User {
   private account: any
