@@ -194,4 +194,11 @@ describe('Lynx', () => {
       })
     })
   })
+
+  describe('get authenticator name', () => {
+    it('should be able to get authenticator name', () => {
+      const lynx = new Lynx([] as Chain[])
+      expect(lynx.getName()).toBe(Name)
+    })
+  })
 })
