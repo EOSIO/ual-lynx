@@ -176,4 +176,8 @@ export class Lynx extends Authenticator {
   public requiresGetKeyConfirmation(): boolean {
     return false
   }
+
+  public getName(): string {
+    return Name
+  }
 }
